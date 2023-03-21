@@ -17,7 +17,7 @@ public class Main extends JavaPlugin {
 	public void onEnable() {
 		saveDefaultConfig();
 		jda = JDAManager.buildJDA(getConfig().getString("Token"));
-		jda.getPresence().setActivity(Activity.listening("0" + "/"+ Bukkit.getMaxPlayers() +" joueurs"));
+		jda.getPresence().setActivity(Activity.listening(Bukkit.getOnlinePlayers().size() + "/"+ Bukkit.getMaxPlayers() +" joueurs"));
 		getCommand("discord").setExecutor(new DiscordCommand(this));
 		getCommand("discordReload").setExecutor(new RlCommand());
 		Bukkit.getPluginManager().registerEvents(new BukkitListener(this), this);
@@ -42,7 +42,7 @@ public class Main extends JavaPlugin {
 		@Override
 		public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
 			reloadConfig();
-			sender.sendMessage("§aConfig.yml Reload !");
+			sender.sendMessage("Â§aConfig.yml Reload !");
 			return true;
 		}
 	}
