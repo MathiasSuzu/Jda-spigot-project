@@ -18,7 +18,7 @@ public class BukkitListener implements Listener {
 	@EventHandler
 	 public void PlayerJoin(PlayerJoinEvent event) {
 		
-		main.getJDA().getPresence().setActivity(Activity.listening(Bukkit.getOnlinePlayers().size() + "/"+ Bukkit.getMaxPlayers() +" joueurs"));
+		main.getJDA().getPresence().setActivity(Activity.listening(Bukkit.getOnlinePlayers().size() + "/"+ Bukkit.getMaxPlayers() +" player(s)"));
 		
 		
 	}
@@ -26,6 +26,6 @@ public class BukkitListener implements Listener {
 	
 	@EventHandler
 	public void PlayerLeft(PlayerQuitEvent event) {
-		main.getJDA().getPresence().setActivity(Activity.listening(Bukkit.getOnlinePlayers().size()-1 + "/"+ Bukkit.getMaxPlayers() +" joueurs"));
+		main.getJDA().getPresence().setActivity(Activity.listening(Bukkit.getOnlinePlayers().size()-1 + "/"+ Bukkit.getMaxPlayers() +" player(s)"));
 	}
 }
