@@ -1,7 +1,7 @@
-name: MCDiscordBot
+name: mbot
 version: 1.0
-author: SEPT_Mg
-main: site.septmg.mcDiscordBot.Main
+author: m
+main: fr.m.mbot.Main
 commands:
 
   discord:
