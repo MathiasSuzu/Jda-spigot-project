@@ -17,7 +17,7 @@ public class Main extends JavaPlugin {
 	public void onEnable() {
 		saveDefaultConfig();
 		jda = JDAManager.buildJDA(getConfig().getString("Token"));
-		jda.getPresence().setActivity(Activity.listening(Bukkit.getOnlinePlayers().size() + "/"+ Bukkit.getMaxPlayers() +" joueurs"));
+		jda.getPresence().setActivity(Activity.listening(Bukkit.getOnlinePlayers().size() + "/"+ Bukkit.getMaxPlayers() +" player(s)"));
 		getCommand("discord").setExecutor(new DiscordCommand(this));
 		getCommand("discordReload").setExecutor(new RlCommand());
 		Bukkit.getPluginManager().registerEvents(new BukkitListener(this), this);
