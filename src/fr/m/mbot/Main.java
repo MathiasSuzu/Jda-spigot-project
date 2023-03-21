@@ -6,24 +6,18 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 
 public class Main extends JavaPlugin {
 	
 	private JDA jda;
 	
-	
-	@Override
-	public void onLoad() {
-		JDAManager.getShardManager();
-		JDAManager.getShardManager().setActivity(Activity.listening("0" + "/"+ Bukkit.getMaxPlayers() +" joueurs"));
-		
-	}
-	
 	@Override
 	public void onEnable() {
-		
 		saveDefaultConfig();
+		jda = JDAManager.buildJDA(getConfig().getString("Token"));
+		jda.getPresence().setActivity(Activity.listening("0" + "/"+ Bukkit.getMaxPlayers() +" joueurs"));
 		getCommand("discord").setExecutor(new DiscordCommand(this));
 		getCommand("discordReload").setExecutor(new RlCommand());
 		Bukkit.getPluginManager().registerEvents(new BukkitListener(this), this);
@@ -49,7 +43,7 @@ public class Main extends JavaPlugin {
 		public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
 			reloadConfig();
 			sender.sendMessage("§aConfig.yml Reload !");
-			return false;
+			return true;
 		}
 	}
 

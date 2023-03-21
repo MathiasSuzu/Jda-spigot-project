@@ -27,7 +27,7 @@ public class DiscordCommand implements CommandExecutor {
 		}
 		
 		try {
-			JDAManager.getShardManager().getTextChannelById(main.getConfig().getString("ChannelID")).canTalk();
+			main.getJDA().getTextChannelById(main.getConfig().getString("ChannelID")).canTalk();
 		} catch (Exception e) {
 			System.out.println(e);
 			sender.sendMessage("§cA problem has arisen");
@@ -35,7 +35,7 @@ public class DiscordCommand implements CommandExecutor {
 		}
 		
 		
-		JDAManager.getShardManager().getTextChannelById(main.getConfig().getString("ChannelID")).sendMessage(Msg).queue();
+		main.getJDA().getTextChannelById(main.getConfig().getString("ChannelID")).sendMessage(Msg).queue();
 		sender.sendMessage("§aThe message was sent !");
 		
 		return true;

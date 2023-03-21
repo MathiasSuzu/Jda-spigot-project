@@ -1,22 +1,18 @@
 package fr.m.mbot;
 
-import net.dv8tion.jda.api.sharding.DefaultShardManager;
-import net.dv8tion.jda.api.sharding.ShardManager;
+import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.OnlineStatus;
 
 public class JDAManager {
 	
-	private static ShardManager shardManager = buildShard();
-
-	public static ShardManager getShardManager() {
-		return shardManager;
-	}
-	
-	private static ShardManager buildShard() {
+	public static JDA buildJDA(String token) {
 		
 		try {
-			ShardManager shard  = new DefaultShardManager("token");
-			shard.addEventListener(new BotListener());
-			return shard;
+			return JDABuilder.createDefault(token)
+					.addEventListeners()
+					.setStatus(OnlineStatus.ONLINE)
+					.build().awaitReady();
 					
 					
 					/*.setToken()
@@ -25,6 +21,9 @@ public class JDAManager {
 					.build();*/
 			
 		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
