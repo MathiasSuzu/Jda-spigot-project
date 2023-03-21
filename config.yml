@@ -1,0 +1,6 @@
+#if token change the plugin must be restart
+Token: 'token'
+
+ChannelID: 'id'
+
+Command-permission: 'discord.use'
